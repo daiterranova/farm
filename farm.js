@@ -5,29 +5,28 @@ var myFarm = document.getElementById("my_farm"); // getting from the html file t
 var ctx = myFarm.getContext("2d"); // creating a canvas context in two dimensions;
 
 //<<Creating objects>>
-
 //field
 var field = {
-  url: "tile.webp",
+  url: "/images/tile.webp",
   chargeOk: false,
 };
 //cow
 var cow = {
-  url: "vaca.webp",
+  url: "/images/vaca.webp",
   chargeOk: false,
   x: 0,
   y: 0,
 };
 //chicken
 var chicken = {
-  url: "chicken.webp",
+  url: "/images/chicken.webp",
   chargeOk: false,
   x: [],
   y: [],
 };
 //pig
 var pig = {
-  url: "cerdo.webp",
+  url: "/images/cerdo.webp",
   chargeOk: false,
   x: [],
   y: [],
@@ -138,7 +137,6 @@ function reDrawing() {
       ctx.drawImage(chicken.image, chicken.x[c], chicken.y[c]);
     }
   }
-  console.log("redibuje");
 }
 
 function movingCow(x, y) {
@@ -148,25 +146,19 @@ function movingCow(x, y) {
 
 function movingAnimal(event) {
   let movement = 5;
+  reDrawing();
+  movingCow(cow.x, cow.y);
   switch (event.keyCode) {
     case keyboards.down:
-      reDrawing();
-      movingCow(cow.x, cow.y);
       cow.y = cow.y + movement;
       break;
     case keyboards.up:
-      reDrawing();
-      movingCow(cow.x, cow.y);
       cow.y -= movement;
       break;
     case keyboards.left:
-      reDrawing();
-      movingCow(cow.x, cow.y);
       cow.x -= movement;
       break;
     case keyboards.right:
-      reDrawing();
-      movingCow(cow.x, cow.y);
       cow.x += movement;
       break;
     default:
